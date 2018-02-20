@@ -21,11 +21,11 @@ app.get('/leaderboard/top_5', get_top_5);
 app.post('/leaderboard', write_score);
 
 function write_score(req, res) {
-    console.log(req.body);
+    console.log("params: " + req.params);
     var score = req.body.score;
     var name = req.body.name;
-    console.log(score);
-    console.log(name);
+    console.log("score: " + score);
+    console.log("name: " + name);
 
     if(score != null && name != null) {
         DB.write(score, name);
