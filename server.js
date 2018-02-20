@@ -26,7 +26,7 @@ function write_score(req, res) {
     console.log(score);
     console.log(name);
 
-    if(!score || !name) {
+    if(score != null && name != null) {
         DB.write(score, name);
         res.sendStatus(200);
     } else {
