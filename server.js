@@ -11,47 +11,36 @@ var DB = new Database();
 
 const express = require('express')
 const app = express()
-
-app.get('/', (req, res) => res.send('Hello World!'))
+app.use(express.urlencoded({extended: true})); // to support URL-encoded bodies
 
 app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port 3000!'))
 
+app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/leaderboard', get_leaderboard);
+app.get('/leaderboard/top_5', get_top_5);
+app.post('/leaderboard', write_score);
 
+function write_score(req, res) {
+    var score = req.body.name;
+    var name = req.body.score;
+    console.log(score);
+    console.log(name);
 
-// route('GET',  '/leaderboard/top_5', get_top_5);
-// route('GET',  '/leaderboard/top_10', get_top_10);
-// route('GET',  '/leaderboard', get_leaderboard);
-// route('POST', '/leaderboard', bodyParser.urlencoded({extended: false}));
+    if(!score || !name) {
+        DB.write(score, name);
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(422);
+    }
+}
 
-// route(function (req, res, next) {
-//     console.log(req.body);
-//     var body = JSON.parse(JSON.stringify(req.body));
-
-//     var score = body.score;
-//     var name = body.name;
-//     console.log(score);
-//     console.log(name);
-
-//     if(score && name) {
-//         DB.write(score, name);
-//         res.send(200);
-//     } else {
-//         res.send(422);
-//     }
-// });
-
-function get_leaderboard(req, res, next) {
+function get_leaderboard(req, res) {
     var data = DB.read();
-    res.send(data);
+    res.sendStatus(data);
 }
 
-function get_top_5(req, res, next) {
-    var data = DB.top_5();
-    res.send(data);
-}
-
-function get_top_10(req, res, next) {
+function get_top_10(req, res) {
     var data = DB.top_10();
-    res.send(data);
+    res.sendStatus(data);
 }
 

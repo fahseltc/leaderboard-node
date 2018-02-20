@@ -22,11 +22,7 @@ class Database {
     }
 
     top_5() {
-        return this.db.get('scores').sortBy('score', 'descending').take(5);
-    }
-
-    top_10() {
-        return this.db.get('scores').sortBy('score', 'descending').take(10);
+        return this.db.get('scores').sortBy('score').reverse().take(5);
     }
 }
 module.exports = Database;

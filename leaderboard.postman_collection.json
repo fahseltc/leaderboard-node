@@ -1,0 +1,104 @@
+{
+	"variables": [],
+	"info": {
+		"name": "leaderboard",
+		"_postman_id": "16849338-0f35-1654-6070-9037e1dcd07b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET /leaderboard",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST /leaderboard",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "f325905b-123c-42d5-83ea-04b6864d3d6c",
+					"name": "POST /leaderboard",
+					"originalRequest": {
+						"url": "localhost:3000/leaderboard",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "greg",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "score",
+									"value": "44555",
+									"description": "",
+									"type": "text"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plainText",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "0",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 20 Feb 2018 03:11:44 GMT",
+							"description": "The date and time that the message was sent"
+						}
+					],
+					"cookie": [],
+					"responseTime": 26,
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "GET /leaderboard/top_5",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
