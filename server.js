@@ -7,7 +7,7 @@ var router = Router();
 var route = router.push;
 var DB = new Database();
 
-var server = http.createServer(router).listen(3000);
+var server = http.createServer(router).listen(process.env.PORT || 3000);
 
 
 route('GET',  '/leaderboard/top_5', get_top_5);
