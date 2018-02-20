@@ -1,0 +1,5 @@
+heroku push origin master
+
+heroku logs -n 10
+
+git push origin master; git push heroku master

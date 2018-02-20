@@ -1,13 +1,6 @@
-//var http = require('http');
-//var Router = require('node-router');
 const Database = require('./database.js');
-//var bodyParser = require('body-parser');
 
-//var router = Router();
-//var route = router.push;
 var DB = new Database();
-
-//var server = http.createServer(router).listen(process.env.PORT || 3000);
 
 const express = require('express')
 const app = express()
@@ -18,7 +11,7 @@ app.listen(process.env.PORT || 3000, () => console.log('Example app listening on
 app.get('/', (req, res) => res.send('Hello World!'))
 app.get('/leaderboard', get_leaderboard);
 app.get('/leaderboard/top_5', get_top_5);
-app.post('/leaderboard', write_score);
+app.post('/leaderboard/', write_score);
 
 function write_score(req, res) {
     console.log("body: " + req.body);
