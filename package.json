@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "logs": "heroku logs -n 10"
   },
   "author": "",
   "license": "ISC",

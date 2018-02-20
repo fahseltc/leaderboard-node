@@ -39,7 +39,7 @@ function get_leaderboard(req, res) {
     res.sendStatus(data);
 }
 
-function get_top_10(req, res) {
+function get_top_5(req, res) {
     var data = DB.top_10();
     res.sendStatus(data);
 }
