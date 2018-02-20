@@ -22,8 +22,8 @@ app.post('/leaderboard', write_score);
 
 function write_score(req, res) {
     console.log("params: " + req.params);
-    var score = req.body.score;
-    var name = req.body.name;
+    var score = req.params.score;
+    var name = req.params.name;
     console.log("score: " + score);
     console.log("name: " + name);
 
