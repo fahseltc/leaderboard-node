@@ -16,6 +16,7 @@ route('GET',  '/leaderboard', get_leaderboard);
 route('POST', '/leaderboard', bodyParser.urlencoded({extended: false}));
 
 route(function (req, res, next) {
+    console.log(req.body);
     var body = JSON.parse(JSON.stringify(req.body));
 
     var score = body.score;
