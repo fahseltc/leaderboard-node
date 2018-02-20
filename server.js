@@ -21,9 +21,9 @@ app.get('/leaderboard/top_5', get_top_5);
 app.post('/leaderboard', write_score);
 
 function write_score(req, res) {
-    console.log("params: " + req.params);
-    var score = req.params.score;
-    var name = req.params.name;
+    console.log("body: " + req.body);
+    var score = req.body.score;
+    var name = req.body.name;
     console.log("score: " + score);
     console.log("name: " + name);
 
