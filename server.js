@@ -36,11 +36,11 @@ function write_score(req, res) {
 
 function get_leaderboard(req, res) {
     var data = DB.read();
-    res.sendStatus(data);
+    res.send(data);
 }
 
 function get_top_5(req, res) {
     var data = DB.top_10();
-    res.sendStatus(data);
+    res.send(data);
 }
 
