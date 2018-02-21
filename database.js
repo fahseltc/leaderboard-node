@@ -24,5 +24,8 @@ class Database {
     top_5() {
         return this.db.get('scores').sortBy('score').reverse().take(5);
     }
+    wipe() {
+        this.db.remove(this.db.get('scores'), function(n) { return true; });
+    }
 }
 module.exports = Database;
