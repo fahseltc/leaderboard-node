@@ -21,6 +21,8 @@ app.post('/leaderboard/', write_score);
 
 var pg = require('pg');
 
+console.log("db url: " = process.env.DATABASE_URL);
+
 app.get('/db', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM scores', function(err, result) {
