@@ -6,13 +6,7 @@ const express = require('express')
 const app = express()
 app.use(express.urlencoded({extended: true})); // to support URL-encoded bodies
 
-var port;
-if (process.env.PORT;) {
-    port = process.env.PORT;
-} else {
-    port = 3000;
-}
-app.listen(port, () => console.log('Example app listening on port: ' + port));
+app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port: ' + (process.env.PORT || 3000)));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
