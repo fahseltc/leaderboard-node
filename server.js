@@ -19,13 +19,25 @@ app.get('/leaderboard', get_leaderboard);
 app.get('/leaderboard/top_5', get_top_5);
 app.post('/leaderboard/', write_score);
 
+var pg = require('pg');
+
+app.get('/db', function (request, response) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT * FROM test_table', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.render('pages/db', {results: result.rows} ); }
+    });
+  });
+});
+
 
 function write_score(req, res) {
-    console.log("body: " + req.body);
     var score = req.body.score;
     var name = req.body.name;
-    console.log("score: " + score);
-    console.log("name: " + name);
+    console.log("name: " + name + " Scored: " + score);
 
     if(score != null && name != null) {
         DB.write(score, name);
