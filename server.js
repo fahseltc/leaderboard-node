@@ -6,7 +6,13 @@ const express = require('express')
 const app = express()
 app.use(express.urlencoded({extended: true})); // to support URL-encoded bodies
 
-app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port 3000!'))
+var port;
+if (process.env.PORT;) {
+    port = process.env.PORT;
+} else {
+    port = 3000;
+}
+app.listen(port, () => console.log('Example app listening on port: ' + port));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -21,7 +27,7 @@ app.post('/leaderboard/', write_score);
 
 var pg = require('pg');
 
-console.log("db url: " = process.env.DATABASE_URL);
+console.log("db url: " + process.env.DATABASE_URL);
 
 app.get('/db', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
