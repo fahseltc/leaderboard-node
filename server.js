@@ -13,27 +13,28 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
 //app.get('/admin/wipe', wipe_db);
 app.get('/', (req, res) => res.send('Hello World!'))
 app.get('/leaderboard', get_leaderboard);
 app.get('/leaderboard/top_5', get_top_5);
 app.post('/leaderboard/', write_score);
 
-var pg = require('pg');
+// var pg = require('pg');
 
-console.log("db url: " + process.env.DATABASE_URL);
+// console.log("db url: " + process.env.DATABASE_URL);
 
-app.get('/db', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM scores', function(err, result) {
-      done();
-      if (err)
-       { console.error(err); response.send("Error " + err); }
-      else
-       { response.render('pages/db', {results: result.rows} ); }
-    });
-  });
-});
+// app.get('/db', function (request, response) {
+//   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+//     client.query('SELECT * FROM scores', function(err, result) {
+//       done();
+//       if (err)
+//        { console.error(err); response.send("Error " + err); }
+//       else
+//        { response.render('pages/db', {results: result.rows} ); }
+//     });
+//   });
+// });
 
 
 function write_score(req, res) {
