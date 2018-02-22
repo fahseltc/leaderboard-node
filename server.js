@@ -15,7 +15,7 @@ app.use(function(req, res, next) {
 });
 
 //app.get('/admin/wipe', wipe_db);
-app.get('/', (req, res) => res.send('Hello World!'); console.log(process.env);)
+app.get('/', (req, res) => res.send('Hello World! env:' + process.env));
 app.get('/leaderboard', get_leaderboard);
 app.get('/leaderboard/top_5', get_top_5);
 app.post('/leaderboard/', write_score);
