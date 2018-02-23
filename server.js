@@ -1,10 +1,10 @@
-const Database = require('./database.js');
+const Database = require('./db/postgres-db.js');
 
 var DB = new Database();
 
 const express = require('express')
 const app = express()
-app.use(express.urlencoded({extended: true})); // to support URL-encoded bodies
+app.use(express.urlencoded( {extended: true} )); // to support URL-encoded bodies
 
 app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port: ' + (process.env.PORT || 3000)));
 
@@ -14,53 +14,31 @@ app.use(function(req, res, next) {
   next();
 });
 
-//app.get('/admin/wipe', wipe_db);
+app.get('/admin/wipe', wipe_db );
 app.get('/', (req, res) => res.send('Hello World! env:' + process.env.environment));
 app.get('/leaderboard', get_leaderboard);
-app.get('/leaderboard/top_5', get_top_5);
 app.post('/leaderboard/', write_score);
 
-// var pg = require('pg');
-
-// console.log("db url: " + process.env.DATABASE_URL);
-
-// app.get('/db', function (request, response) {
-//   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-//     client.query('SELECT * FROM scores', function(err, result) {
-//       done();
-//       if (err)
-//        { console.error(err); response.send("Error " + err); }
-//       else
-//        { response.render('pages/db', {results: result.rows} ); }
-//     });
-//   });
-// });
-
-
 function write_score(req, res) {
-    var score = req.body.score;
-    var name = req.body.name;
-    console.log("name: " + name + " Scored: " + score);
+  var score = req.body.score;
+  var name = req.body.name;
+  console.log("Name: " + name + " Scored: " + score);
 
-    if(score != null && name != null) {
-        DB.write(score, name);
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(422);
-    }
+  if(score != null && name != null) {
+    DB.write(score, name);
+    res.sendStatus(200);
+  } else {
+    res.sendStatus(422);
+  }
 }
 
 function get_leaderboard(req, res) {
-    var data = DB.read();
-    res.send(data);
-}
-
-function get_top_5(req, res) {
-    var data = DB.top_5();
-    res.send(data);
+  DB.get_all_scores(res);
 }
 
 function wipe_db(req, res) {
-    DB.wipe();
-    res.sendStatus(200);
+  console.log('wipe');
+  DB.wipe();
+  res.sendStatus(200);
 }
+
