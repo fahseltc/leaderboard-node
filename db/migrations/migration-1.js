@@ -1,7 +1,7 @@
 const { Client } = require('pg');
 const connection_config = {
   connectionString: 'postgres://behr:behr@localhost:5432/leaderboard?ssl=false' // local db
-}
+};
 
 const client = new Client(connection_config);
 client.connect();
