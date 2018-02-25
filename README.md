@@ -1,5 +1,6 @@
 # leaderboard-node
 Simple NodeJS leaderboard using postgres.
+Used in my game project [Mega Mecha Marxist II](https://github.com/fahseltc/phaser-space-game)
 
 Fully deployable on heroku free tier. No authentication.
 
